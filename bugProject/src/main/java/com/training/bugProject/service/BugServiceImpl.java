@@ -20,12 +20,12 @@ public class BugServiceImpl implements  BugService {
 
     @Transactional(rollbackOn = Exception.class, dontRollbackOn = {ArithmeticException.class,
             IllegalArgumentException.class})
-    @HystrixCommand(fallbackMethod = "fallback1")
+    //@HystrixCommand(fallbackMethod = "fallback1")
     public void create(BugRequest bugRequest) throws Exception {
         System.out.println(bugRequest);
         //childMethod(bugRequest);
         bugRepository.save(bugRequest);
-        emailClient.sendEmail(bugRequest);
+        //emailClient.sendEmail(bugRequest);
         //throw new Exception();
     }
 
